@@ -5,8 +5,13 @@
 # Для решения задачи не используйте встроенные функции и функции из модуля math.
 
 def my_round(number, ndigits):
-    pass
-
+    num = number*(10**ndigits) # двигаю запятую до числа, которое буду проверять
+    num1 = int((num%1)*10) # отделяю это число
+    if num1 >= 5:
+        num = (int(num)+1) # прибавляю к целой части
+    else:
+        int(num)
+    return num/(10**ndigits)  # двигаю запятую назад
 
 print(my_round(2.1234567, 5))
 print(my_round(2.1999967, 5))
@@ -20,7 +25,8 @@ print(my_round(2.9999967, 5))
 # !!!P.S.: функция не должна НИЧЕГО print'ить
 
 def lucky_ticket(ticket_number):
-    pass
+    x = (lambda ticket_number : 'yes' if sum(ticket_number[:3]) == sum(ticket_number[3:]) else 'no')(list(map(int, list(str(ticket_number)))))
+    return x
 
 
 print(lucky_ticket(123006))
